@@ -36,8 +36,9 @@ void drawPixel(int x,int y,int c)
    WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
   // cout << str << " " << endl;
 }
-int _tmain(int argc, _TCHAR* argv[])
+void initSerialConsole()
 {
+
 	LPCTSTR sPortName = "COM3";  
 
 	hSerial = ::CreateFile(sPortName,GENERIC_READ | GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
@@ -65,21 +66,5 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		cout << "error setting serial port state\n";
 	}
-	 
-	
-	
-	while(1)
-	{
-		char a;
-		cin >> a;
-		for(int j=0;j<20;j++)
-			for(int i=0;i<20;i++)
-				drawPixel(i,j,2);
-		WriteFile (hSerial,"d",1,&dwBytesWritten ,NULL);
-		
-		
-		
-	}
-	return 0;
 }
 
