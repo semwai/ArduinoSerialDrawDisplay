@@ -7,10 +7,11 @@ int main()
 	{
 		char a;
 		cin >> a;
-		for(int j=0;j<20;j++)
-			for(int i=0;i<20;i++)
-				drawPixel(i,j,2);
-		WriteFile (hSerial,"d",1,&dwBytesWritten ,NULL);
+		for(int j=16;j<48;j+=2)
+			for(int i=16;i<112;i+=2)
+				drawPixel(i,j,1);
+		drawRect(5,5,118,54,2);
+		drawDisplay();
 	}
 
 }

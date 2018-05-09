@@ -36,6 +36,42 @@ void drawPixel(int x,int y,int c)
    WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
   // cout << str << " " << endl;
 }
+void drawRect(int x,int y, int w,int h, int c)
+{
+	char str[11];
+   DWORD dwSize;
+   WriteFile (hSerial,"r ",2,&dwBytesWritten ,NULL);
+
+   sprintf(str, "%d", x);
+   for (dwSize=0;str[dwSize];dwSize++);
+   WriteFile (hSerial,str,dwSize,&dwBytesWritten ,NULL);
+   WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
+
+   sprintf(str, "%d", y);
+   for (dwSize=0;str[dwSize];dwSize++);
+   WriteFile (hSerial,str,dwSize,&dwBytesWritten ,NULL);
+   WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
+
+   sprintf(str, "%d", w);
+   for (dwSize=0;str[dwSize];dwSize++);
+   WriteFile (hSerial,str,dwSize,&dwBytesWritten ,NULL);
+   WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
+
+   sprintf(str, "%d", h);
+   for (dwSize=0;str[dwSize];dwSize++);
+   WriteFile (hSerial,str,dwSize,&dwBytesWritten ,NULL);
+   WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
+
+   sprintf(str, "%d", c);
+   for (dwSize=0;str[dwSize];dwSize++);
+   WriteFile (hSerial,str,dwSize,&dwBytesWritten ,NULL);
+   WriteFile (hSerial," ",1,&dwBytesWritten ,NULL);
+}
+void drawDisplay()
+{
+	WriteFile (hSerial,"d",1,&dwBytesWritten ,NULL);
+
+}
 void initSerialConsole()
 {
 
@@ -67,4 +103,4 @@ void initSerialConsole()
 		cout << "error setting serial port state\n";
 	}
 }
-
+ 
